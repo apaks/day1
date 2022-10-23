@@ -2,7 +2,7 @@
   "name": "pixi-webpack-demo",
   "version": "1.0.0",
   "description": "make pixi.js game with webpack",
-  "homepage": "http://github.io/apaks/day1",
+  "homepage": "http://apaks/github.io/day1",
   "main": "src/js/main.js",
   "scripts": {
     "start": "webpack-dev-server --open 'chrome' --config webpack.dev.js",
