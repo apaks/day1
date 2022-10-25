@@ -35,7 +35,9 @@ const setPosition = (results) => {
 //   const landmarks = results.multiHandLandmarks[index];
 //   drawingUtils.drawConnectors(
 //       canvasCtx, landmarks, mpHands.HAND_CONNECTIONS,
-//       {color: isRightHand ? '#00FF00' : '#FF0000'});
+//       {color: isRightHand ? '#00FF00' : '#FF0000'}
+// );
+
 //   drawingUtils.drawLandmarks(canvasCtx, landmarks, {
 //     color: isRightHand ? '#00FF00' : '#FF0000',
 //     fillColor: isRightHand ? '#FF0000' : '#00FF00',
@@ -52,24 +54,25 @@ function drawPointFingerLandMark(results) {
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
     if (results.multiHandLandmarks && results.multiHandedness) {
+
+  
       for (let index = 0; index < results.multiHandLandmarks.length; index++) {
         const classification = results.multiHandedness[index];
         const isRightHand = classification.label === 'Right';
 
         const landmarks = results.multiHandLandmarks[index];
+      
         drawLandmarks(canvasCtx, landmarks, {
-            color: isRightHand ? '#00FF00' : '#FF0000',
-            fillColor: isRightHand ? '#FF0000' : '#00FF00',
-            radius: (x) => {
-                return lerp(x.from.z, -0.4, .01, 1, 0.1);
-            }
-        });
+          color: isRightHand ? '#00FF00' : '#FF0000',
+          fillColor: isRightHand ? '#FF0000' : '#00FF00',
+          radius: (x) => {
+              return lerp(x.from.z, -0.4, .01, 1, 0.1) } } );
 
+        drawConnectors( canvasCtx, landmarks, hands.HAND_CONNECTIONS,
+          {color: isRightHand ? '#00FF00' : '#FF0000', lineWidth: 20} );
 
       }
 
-
-    
     }
     canvasCtx.restore();
 }
@@ -87,6 +90,14 @@ function onResults(results) {
 const hands = new Hands({locateFile: (file) => {
     return `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.1/${file}`;
   }});
+
+hands.setOptions({
+    maxNumHands: 2,
+    modelComplexity: 1,
+    minDetectionConfidence: 0.5,
+    minTrackingConfidence: 0.5
+  });
+
 hands.onResults(onResults);
 
 /**
