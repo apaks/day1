@@ -1,4 +1,4 @@
-import {drawLandmarks, lerp} from '@mediapipe/drawing_utils/drawing_utils';
+import {drawLandmarks, drawConnectors, lerp} from '@mediapipe/drawing_utils/drawing_utils';
 import {Hands} from '@mediapipe/hands/hands';
 import {Camera} from '@mediapipe/camera_utils/camera_utils';
 import {ControlPanel, FPS} from '@mediapipe/control_utils/control_utils';
@@ -28,14 +28,35 @@ const setPosition = (results) => {
     }
 }
 
+
+// for (let index = 0; index < results.multiHandLandmarks.length; index++) {
+//   const classification = results.multiHandedness[index];
+//   const isRightHand = classification.label === 'Right';
+//   const landmarks = results.multiHandLandmarks[index];
+//   drawingUtils.drawConnectors(
+//       canvasCtx, landmarks, mpHands.HAND_CONNECTIONS,
+//       {color: isRightHand ? '#00FF00' : '#FF0000'});
+//   drawingUtils.drawLandmarks(canvasCtx, landmarks, {
+//     color: isRightHand ? '#00FF00' : '#FF0000',
+//     fillColor: isRightHand ? '#FF0000' : '#00FF00',
+//     radius: (data: drawingUtils.Data) => {
+//       return drawingUtils.lerp(data.from!.z!, -0.15, .1, 10, 1);
+//     }
+//   });
+// }
+
+
 function drawPointFingerLandMark(results) {
     // Draw the overlays.
     canvasCtx.save();
     canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
     if (results.multiHandLandmarks && results.multiHandedness) {
-        const isRightHand = true;
-        const landmarks = [results.multiHandLandmarks[0][8]];
+      for (let index = 0; index < results.multiHandLandmarks.length; index++) {
+        const classification = results.multiHandedness[index];
+        const isRightHand = classification.label === 'Right';
+
+        const landmarks = results.multiHandLandmarks[index];
         drawLandmarks(canvasCtx, landmarks, {
             color: isRightHand ? '#00FF00' : '#FF0000',
             fillColor: isRightHand ? '#FF0000' : '#00FF00',
@@ -43,6 +64,12 @@ function drawPointFingerLandMark(results) {
                 return lerp(x.from.z, -0.4, .01, 1, 0.1);
             }
         });
+
+
+      }
+
+
+    
     }
     canvasCtx.restore();
 }

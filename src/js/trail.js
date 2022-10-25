@@ -1,7 +1,7 @@
 // Get the texture for rope.
 import * as PIXI from 'pixi.js'
 
-const trailTexture = PIXI.Texture.from('/assets/bunny.png');
+const trailTexture = PIXI.Texture.from('/assets/trail.png');
 const historyX = [];
 const historyY = [];
 // historySize determines how long the trail will be.
