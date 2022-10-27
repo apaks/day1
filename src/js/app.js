@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 export const shouldUseCamera = true;
-export const extraDebug = true;
+export const extraDebug = false;
 
 export const APP_WIDTH = 640;
 export const APP_HEIGHT = 480;

@@ -16,11 +16,11 @@ function getMousePosition() {
 
 app.ticker.add((delta) => {
   // main game loop
-  // const mousePosition = getMousePosition();
-  // mouseTick(app, mousePosition);
-  // const fruitWave = getFruitWave();
-  // fruitWave.tick();
-  // let collisions = fruitWave.checkCollisions({...mousePosition, height: 1, width: 1});
-  // userInterface.score += collisions;
+  const mousePosition = getMousePosition();
+  mouseTick(app, mousePosition);
+  const fruitWave = getFruitWave();
+  fruitWave.tick();
+  let collisions = fruitWave.checkCollisions({...mousePosition, height: 1, width: 1});
+  userInterface.score += collisions;
   userInterface.tick();
 });

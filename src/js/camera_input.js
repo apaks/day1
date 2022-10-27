@@ -58,10 +58,12 @@ function onResults(results) {
   setPosition(results);
   // Update the frame rate.
   fpsControl.tick();
+  drawPointFingerLandMark(results);
 
-  if(extraDebug) {
-      drawPointFingerLandMark(results);
-  }
+  // if(extraDebug) {
+  //     drawPointFingerLandMark(results);
+  // }
+  
 }
 
 const hands = new Hands({locateFile: (file) => {
