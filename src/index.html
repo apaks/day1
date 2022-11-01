@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset="UTF-8">
-    <title>pixi-webpack-demo</title>
+    <meta charset="UTF-8" />
+    <title>NeRb</title>
     <style>
       html,
       body {
@@ -22,25 +21,26 @@
         position: absolute;
       }
     </style>
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css"
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/style.css" />
   </head>
 
   <body>
-  <div class="container">
-    <div class="loading">
-      <div class="spinner"></div>
-      <div class="message">
-        Loading
+    <div class="container">
+      <div class="loading">
+        <div class="spinner"></div>
+        <div class="message">Loading</div>
       </div>
+      <video class="input_video"></video>
+      <canvas class="output_canvas"></canvas>
+      <canvas id="scene"></canvas>
     </div>
-    <video class="input_video"></video>
-    <canvas class="output_canvas"></canvas>
-    <canvas id="scene"></canvas>
-  </div>
-  <div class="control-panel"/>
+    <div class="control-panel" />
   </body>
-
 </html>

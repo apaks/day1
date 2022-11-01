@@ -24,9 +24,27 @@ export const getLastFingerPosition = () => {
 
 const setPosition = (results) => {
     if(results && results.multiHandLandmarks) {
-        let finger = results.multiHandLandmarks[FIRST_HAND][POINTING_FINGER_TIP];
-        position = {x: finger.x * app.screen.width, y: finger.y * app.screen.height};
+        let index_tip = results.multiHandLandmarks[FIRST_HAND][POINTING_FINGER_TIP];
+        position = {x: index_tip.x * app.screen.width, y: index_tip.y * app.screen.height};
+        // get actions
+        let thumb_tip = results.multiHandLandmarks[FIRST_HAND][4];
+        let middle_tip = results.multiHandLandmarks[FIRST_HAND][12];
+        let ring_tip = results.multiHandLandmarks[FIRST_HAND][16]; 
+        let pinky_tip = results.multiHandLandmarks[FIRST_HAND][20];
+
+        let dist_ti = distance(thumb_tip.x, thumb_tip.y, index_tip.x, index_tip.y );
+        let dist_tm = distance(thumb_tip.x, thumb_tip.y, middle_tip.x, middle_tip.y );
+        let dist_tr = distance(thumb_tip.x, thumb_tip.y, ring_tip.x, ring_tip.y );
+        let dist_tp = distance(thumb_tip.x, thumb_tip.y, pinky_tip.x, pinky_tip.y );
+        console.log(dist_ti, dist_tm, dist_tr, dist_tp);
     }
+}
+
+function distance(x1, y1, x2, y2)
+{
+    // Calculating distance
+    return Math.sqrt(Math.pow(x2 - x1, 2) +
+                Math.pow(y2 - y1, 2) * 1.0);
 }
 
 function drawPointFingerLandMark(results) {
@@ -41,14 +59,16 @@ function drawPointFingerLandMark(results) {
         const isRightHand = classification.label === 'Right';
         const landmarks = results.multiHandLandmarks[index];
       
+        drawConnectors( canvasCtx, landmarks, HAND_CONNECTIONS,
+          {color: isRightHand ? 'black' : 'black', lineWidth: 2} );
+
         drawLandmarks(canvasCtx, landmarks, {
           color: isRightHand ? '#00FF00' : '#FF0000',
-          fillColor: isRightHand ? '#FF0000' : '#00FF00',
+          fillColor: isRightHand ? 'white' : 'white',
           radius: (x) => {
               return lerp(x.from.z, -0.4, .01, 1, 0.1) } } );
 
-        drawConnectors( canvasCtx, landmarks, HAND_CONNECTIONS,
-          {color: isRightHand ? '#00FF00' : '#FF0000', lineWidth: 2} );
+
       }
     }
     canvasCtx.restore();
