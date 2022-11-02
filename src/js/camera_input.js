@@ -18,11 +18,22 @@ export const fpsControl = new FPS();
 const FIRST_HAND = 0;
 const POINTING_FINGER_TIP = 8;
 let position = {x: 0, y: 0};
+
+// 0 - no gesture, 1: thumb_index, 2: tm, 3: tr, 4: tp
+let gestures = 0;
+
+
 export const getLastFingerPosition = () => {
     return position;
 }
 
+export const getGestures = () => {
+  return gestures;
+}
+
 const setPosition = (results) => {
+    gestures = 0;
+
     if(results && results.multiHandLandmarks) {
         let index_tip = results.multiHandLandmarks[FIRST_HAND][POINTING_FINGER_TIP];
         position = {x: index_tip.x * app.screen.width, y: index_tip.y * app.screen.height};
@@ -36,7 +47,13 @@ const setPosition = (results) => {
         let dist_tm = distance(thumb_tip.x, thumb_tip.y, middle_tip.x, middle_tip.y );
         let dist_tr = distance(thumb_tip.x, thumb_tip.y, ring_tip.x, ring_tip.y );
         let dist_tp = distance(thumb_tip.x, thumb_tip.y, pinky_tip.x, pinky_tip.y );
-        console.log(dist_ti, dist_tm, dist_tr, dist_tp);
+        
+        if (dist_ti < 0.05) gestures = 1 ;
+        if (dist_tm < 0.075) gestures = 2 ;
+        if (dist_tr < 0.075) gestures = 3 ;
+        if (dist_tp < 0.05) gestures = 4 ;
+
+        // console.log(gestures);
     }
 }
 
