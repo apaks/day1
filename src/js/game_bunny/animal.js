@@ -23,7 +23,7 @@ export default class Animal {
     }
     constructor() {
         // notesIdx++;
-        this._sprite = PIXI.Sprite.from('assets/cube.png');
+        this._sprite = PIXI.Sprite.from('./assets/cube.png');
         this._velocity = 0;
         
         function getRandomInt(min, max) {

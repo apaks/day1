@@ -12,7 +12,7 @@ var score = 0;
 initRope(app);
 // add sound
 const sound = new Howl({
-  src: ['./sounds/whip.mp3'],
+  src: ['./assets/whip.mp3'],
   volume: 0.1
 });
 sound.play();
@@ -20,7 +20,7 @@ sound.play();
 const stratTime = performance.now();
 const soundNames = ['trackDo', 'trackRe', 'trackMi', 'trackFa'];
 var hashSound = {};
-const soundSrc = ['./sounds/do.wav', './sounds/re.wav', './sounds/mi.wav', './sounds/fa.wav'];
+const soundSrc = ['./assets/do.wav', './assets/re.wav', './assets/mi.wav', './assets/fa.wav'];
 
 for (let idx = 0; idx < soundSrc.length; idx++) {
   // console.log(idx);
