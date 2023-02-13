@@ -22,7 +22,7 @@ export default class Animal {
         this._boundaries = boundaries;
     }
     constructor() {
-        notesIdx++;
+        // notesIdx++;
         this._sprite = PIXI.Sprite.from('assets/cube.png');
         this._velocity = 0;
         
@@ -37,7 +37,7 @@ export default class Animal {
           }
           
         angle = getRandomArbitrary(-0.2, 0.2);
-        // let posX = getRandomInt(-0.5, 3.5);
+        let posX = getRandomInt(-0.5, 3.5);
         // let posX = notes[notesIdx];
         // console.log(posX);
         this.posX = posX;
