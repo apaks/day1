@@ -23,12 +23,12 @@ var hashSound = {};
 const soundSrc = ['./sounds/do.wav', './sounds/re.wav', './sounds/mi.wav', './sounds/fa.wav'];
 
 for (let idx = 0; idx < soundSrc.length; idx++) {
-  console.log(idx);
+  // console.log(idx);
   hashSound[soundNames[idx]] = new Howl({
     src: [soundSrc[idx]]
   });
 }
-console.log(soundSrc);
+// console.log(soundSrc);
 
 initRope(app);
 
