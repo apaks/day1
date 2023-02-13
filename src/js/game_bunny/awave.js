@@ -5,8 +5,9 @@ import app, {extraDebug} from "../app";
 export default class Awave {
 
     constructor() {
-        console.log("bunny")
-        this._waveSize = Math.random() * 4;
+        // console.log("bunny")
+        // this._waveSize = Math.random() * 2;
+        this._waveSize = 1;
         this._active = this._waveSize;
         this._animals = [];
 

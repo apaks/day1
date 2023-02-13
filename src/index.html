@@ -2,10 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>NeRb</title>
+    <title>Safar</title>
     <style>
       html,
       body {
+        /* background-image: url("assets/leaf_background.jpg"); */
         width: 100%;
         height: 100%;
         padding: 0;
@@ -20,6 +21,33 @@
         overflow: hidden;
         position: absolute;
       }
+
+      div.InvisibleDiv {
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+        width: 0;
+      }
+
+      .column {
+        float: left;
+        width: 25%;
+        /* padding: 10px; */
+        column-gap: 0%;
+        margin: 0%;
+        height: 450px;
+        opacity: 1;
+      }
+      
+
+      /* .dot {
+        height: 25px;
+        width: 25px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+      } */
+
     </style>
     <link
       rel="stylesheet"
@@ -32,15 +60,91 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="loading">
-        <div class="spinner"></div>
-        <div class="message">Loading</div>
+   
+    <!-- <div style="top: 50%; left: 50%; position: fixed; transform: translate(-50%, -50%); background-image: url('assets/space.png')"; class="container"> -->
+    <div class="container"; style="top: 50%; left: 50%; position: fixed; transform: translate(-50%, -50%); " >
+      <div class="InvisibleDiv">
+        <div class="loading">
+          <div class="spinner"></div>
+          <div class="message">Loading</div>
+        </div>
+        <video class="input_video"></video>
       </div>
-      <video class="input_video"></video>
+      
+
+
+      <div class="column" style="background-color:#900639;">
+        <img style = "max-width: 80%; top: 110%; left: 50%; position: relative; transform: translate(-50%, -50%);" src="Assets/gs1.png" alt="hd1">
+      </div>
+      <div class="column" style="background-color:#00750c;">
+        <img style = "max-width: 80%; top: 110%; left: 50%; position: relative; transform: translate(-50%, -50%);" src="Assets/gs2.png" alt="hd1">
+      </div>
+      <div class="column" style="background-color:#66077e;">
+        <img style = "max-width: 80%; top: 110%; left: 50%; position: relative; transform: translate(-50%, -50%);" src="Assets/gs3.png" alt="hd1">
+      </div>
+      <div class="column" style="background-color:#0845eb;">
+        <img style = "max-width: 80%; top: 110%; left: 50%; position: relative; transform: translate(-50%, -50%);" src="Assets/gs4.png" alt="hd1">
+      </div>
+      
       <canvas class="output_canvas"></canvas>
       <canvas id="scene"></canvas>
+
+
+
+     
+      
+      <!-- <span class="dot"; id="thumb"></span>
+      <span class="dot"; id="index"></span>
+      <span class="dot"; id="middle"></span>
+      <span class="dot"; id="ring"></span>
+      <span class="dot"; id="little"></span> -->
+  
+ 
+      
+      // <script>
+  
+      //   function myTimer() {
+      //     var gesture = "999";
+      //     if (document.getElementById("gesture") != null) {
+      //       gesture = document.getElementById("gesture").innerHTML;
+      //     }
+          
+  
+      //     if (gesture == "1") {
+      //       document.getElementById("thumb").style.backgroundColor = 'green';
+      //       document.getElementById("index").style.backgroundColor = 'green';
+      //     } else if (gesture == "2") {
+      //       document.getElementById("thumb").style.backgroundColor = 'green';
+      //       document.getElementById("middle").style.backgroundColor = 'green';
+      //     } else if (gesture == "3") {
+      //       document.getElementById("thumb").style.backgroundColor = 'green';
+      //       document.getElementById("ring").style.backgroundColor = 'green';
+      //     } else if (gesture == "4") {
+      //       document.getElementById("thumb").style.backgroundColor = 'green';
+      //       document.getElementById("little").style.backgroundColor = 'green';
+      //     } else {
+      //       document.getElementById("thumb").style.backgroundColor = 'red';
+      //       document.getElementById("index").style.backgroundColor = 'red';
+      //       document.getElementById("middle").style.backgroundColor = 'red';
+      //       document.getElementById("ring").style.backgroundColor = 'red';
+      //       document.getElementById("little").style.backgroundColor = 'red';
+      //     }
+      //   }
+      //   setInterval(myTimer, 33);
+      // </script>
+  
+      
     </div>
+
+
+
+
     <div class="control-panel" />
+
+
+    
+
+
+
   </body>
 </html>

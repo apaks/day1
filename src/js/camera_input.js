@@ -1,6 +1,8 @@
 
 import {drawLandmarks, drawConnectors, lerp} from '@mediapipe/drawing_utils/drawing_utils';
+import '@mediapipe/hands/hands';
 import {Hands, HAND_CONNECTIONS} from '@mediapipe/hands/hands';
+
 import {Camera} from '@mediapipe/camera_utils/camera_utils';
 import {ControlPanel, FPS} from '@mediapipe/control_utils/control_utils';
 import app, {APP_HEIGHT, APP_WIDTH, extraDebug} from "./app";
@@ -49,8 +51,8 @@ const setPosition = (results) => {
         let dist_tp = distance(thumb_tip.x, thumb_tip.y, pinky_tip.x, pinky_tip.y );
         
         if (dist_ti < 0.05) gestures = 1 ;
-        if (dist_tm < 0.075) gestures = 2 ;
-        if (dist_tr < 0.075) gestures = 3 ;
+        if (dist_tm < 0.05) gestures = 2 ;
+        if (dist_tr < 0.05) gestures = 3 ;
         if (dist_tp < 0.05) gestures = 4 ;
 
         // console.log(gestures);
@@ -81,7 +83,7 @@ function drawPointFingerLandMark(results) {
 
         drawLandmarks(canvasCtx, landmarks, {
           color: isRightHand ? '#00FF00' : '#FF0000',
-          fillColor: isRightHand ? 'white' : 'white',
+          fillColor: isRightHand ? '#FF0000' : '#00FF00',
           radius: (x) => {
               return lerp(x.from.z, -0.4, .01, 1, 0.1) } } );
 
